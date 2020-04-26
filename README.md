@@ -15,6 +15,12 @@ pushcut_url="https://api.pushcut.io/example_webhook_secret/notifications/I%20Lik
 ```
 Edit the file at `/usr/local/etc/pushcut-announce` to provide the Pushcut Webhook URL for the Notification.
 
+## Usage
+When the systemd service unit is enabled, a notification should be sent every time the Raspberry Pi is booted and the network is up. A simple test would be to issue `sudo shutdown -r now` and wait a moment. The notification may also be sent manually:
+```
+pi@raspberrypi:~ $ sudo systemctl start pushcut-announce.service
+```
+
 ## Troubleshooting
 If you are not receiving the expected notification on the iOS/iPadOS devices with Pushcut installed, try running the script manually. The response from the script/service should offer some guidance. Here are some examples:
 ```
@@ -32,8 +38,9 @@ If the output from `/usr/local/bin/pushcut-announce` is successful, but notifica
 pi@raspberrypi:~ $ sudo systemctl status pushcut-announce.service
 ```
 
-## Issues
-Please report issues using https://github.com/jlamoree/pushcut-announce/issues
+## Issues and Feature Requests
+Please report issues and make feature requests using the [project issues](https://github.com/jlamoree/pushcut-announce/issues) page.
 
 ## License
 This project is licensed under the terms of the MIT license. See LICENSE.
+
