@@ -1,0 +1,3 @@
+# Enter your Pushcut Webhook URL for your Notification
+# The following is an example to replace:
+pushcut_url="https://api.pushcut.io/example_webhook_secret/notifications/I%20Like%20Pi"

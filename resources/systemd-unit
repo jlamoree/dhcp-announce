@@ -1,0 +1,9 @@
+[Unit]
+Description=Make a Pushcut webhook call to announce network is up.
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/pushcut-announce
+
+[Install]
+WantedBy=network-online.target

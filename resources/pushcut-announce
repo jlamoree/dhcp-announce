@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+config=/usr/local/etc/pushcut-announce
+source $config
+content="Hi! I'm online at $(hostname -I)"
+
+if [[ -z $pushcut_url || $pushcut_url =~ example_webhook_secret ]]; then
+  echo "Error: Please update $config with Pushcut Webhook URL." >&2
+  exit 1
+fi
+
+response=$(curl --silent --show-error -X POST -d "{\"text\": \"$content\"}" -H "Content-Type: application/json" $pushcut_url 2>&1)
+if [[ $response =~ Success ]]; then
+  echo "Webhook response: $response"
+else
+  echo "Webhook call unsuccessful. $response" >&2
+  exit 1
+fi
+
